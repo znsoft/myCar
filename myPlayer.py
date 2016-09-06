@@ -1,21 +1,29 @@
+#!/usr/bin/python
+#-*- coding: utf-8 -*-
+
 import RPi.GPIO as GPIO
 from time import sleep
 import subprocess
 import os
 from random import randint
 
-Mfiles = []
+MPFiles = []
+
+def find_files(path):
+        find_files=[]
+        for root,dirs,files in os.walk(path):
+                find_files+=[os.path.join(root,name) for name in files if name.endswith('.mp3')]
+        return find_files
+
+
 
 path = "/media/usb0/"
 
-files = os.listdir(path)
-MPFiles = images = filter(lambda x: x.endswith('.mp3'), files); 
-i=0
+MPFiles+=find_files(path)
+MPFiles+=find_files("/home/pi/")
 
+print len(MPFiles)
 
-for mf in MPFiles:
-	MPFiles[i] = path+mf
-	i = i+1
 
 Mfiles = list(MPFiles)
 
