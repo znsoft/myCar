@@ -9,6 +9,14 @@ from random import randint
 
 MPFiles = []
 
+#class player:
+#	def __init__(this):
+ #               os.execv(
+		
+
+#sox -t mp3 "http://updox.upd.edu.ph/stream/2/;stream.nsv" -t wav --input-buffer 80000 -r 22050 -c 1 - | sudo ./pi_fm_rds -ps test -rt 'Call 453589032' -freq 100.0 -audio -
+
+
 def find_files(path):
         find_files=[]
         for root,dirs,files in os.walk(path):
@@ -81,10 +89,10 @@ while s != "q":
 		i=0
 
 	if GPIO.input(6)==0: #vol down	
-		player.stdin.write("*")
+		player.stdin.write("/")
 
 	if GPIO.input(26)==0: #vol up
-        	player.stdin.write("/")
+        	player.stdin.write("*")
 
 	if GPIO.input(5)==0: #next
         	player.stdin.write(">")
